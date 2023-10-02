@@ -1,0 +1,61 @@
+<main class="login-page">
+    <div class="login-container">
+      <div class="login-form-case">
+        <div class="login-form-header">
+          <h2 class="form-title">uni<span>Verge</span></h2>
+          <p class="form-sub-title">Login</p>
+        </div>
+        <form #login="ngForm" (ngSubmit)="submit(login)">
+          <p>
+            <mat-form-field appearance="outline" class="input-user-id">
+              <mat-label>User ID</mat-label>
+              <input
+                matInput
+                placeholder="Enter Your User ID"
+                required
+                type="text"
+                name="userId"
+                ngModel
+              />
+              <mat-icon matSuffix></mat-icon>
+              <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+          </p>
+  
+          <p>
+            <mat-form-field appearance="outline" class="input-user-id">
+              <mat-label>Password</mat-label>
+              <input
+                id="password"
+                matInput
+                placeholder="Enter Your Password"
+                required
+                [type]="passwordFieldType"
+                name="password"
+                ngModel
+              />
+              <mat-icon
+                (click)="togglePassword()"
+                *ngIf="passwordFieldType == 'text'"
+                matSuffix
+                >visibility</mat-icon
+              >
+              <mat-icon
+                (click)="togglePassword()"
+                *ngIf="passwordFieldType == 'password'"
+                matSuffix
+                ><span class="material-symbols-outlined">
+                  visibility_off
+                </span></mat-icon
+              >
+              <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+          </p>
+  
+          <button mat-raised-button>Login</button>
+        </form>
+        <p class="form-footer">Copyright of uniVerge</p>
+      </div>
+    </div>
+  </main>
+  

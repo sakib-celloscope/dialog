@@ -1,0 +1,110 @@
+<h1 mat-dialog-title class="dialog-title" *ngIf="element != null">
+  Update Node
+</h1>
+<h1 mat-dialog-title class="dialog-title" *ngIf="element == null">Add Node</h1>
+<div mat-dialog-content>
+  <form
+    class="dialog-container"
+    [formGroup]="nodeForm"
+    (ngSubmit)="handleNode()"
+  >
+    <!-- Node Id -->
+    <p class="modal-input">
+      <mat-form-field appearance="fill">
+        <mat-label>Node ID</mat-label>
+        <input
+          required
+          *ngIf="!element != null"
+          matInput
+          placeholder="Enter Node ID"
+          formControlName="nodeId"
+        />
+        <mat-icon matSuffix></mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+    </p>
+    <!-- Node Name -->
+    <p class="modal-input">
+      <mat-form-field appearance="fill">
+        <mat-label>Node Name</mat-label>
+        <input
+          required
+          matInput
+          *ngIf="!element != null"
+          placeholder="Enter Node Name"
+          formControlName="nodeName"
+        />
+        <mat-icon matSuffix></mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+    </p>
+    <!-- Vendor -->
+    <p class="modal-input">
+      <mat-form-field appearance="fill">
+        <mat-label>Vendor</mat-label>
+        <input
+          required
+          matInput
+          *ngIf="!element != null"
+          placeholder="Enter Vendor Name"
+          formControlName="vendor"
+        />
+        <mat-icon matSuffix></mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+    </p>
+    <!-- System Name -->
+    <p class="modal-input">
+      <mat-form-field appearance="fill">
+        <mat-label>System Name</mat-label>
+        <input
+          required
+          matInput
+          *ngIf="!element != null"
+          placeholder="Enter System Name"
+          formControlName="systemName"
+        />
+        <mat-icon matSuffix></mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+    </p>
+    <!-- Location -->
+    <p class="modal-input">
+      <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <input
+          required
+          matInput
+          *ngIf="!element != null"
+          placeholder="Enter Location"
+          formControlName="location"
+        />
+        <mat-icon matSuffix></mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+    </p>
+    <!-- Capacity -->
+    <p class="modal-input">
+      <mat-form-field appearance="fill">
+        <mat-label>Capacity</mat-label>
+        <input
+          required
+          matInput
+          *ngIf="!element != null"
+          placeholder="Enter Capacity"
+          formControlName="capacity"
+        />
+        <mat-icon matSuffix></mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
+    </p>
+    <div mat-dialog-actions class="dialog-actions">
+      <ng-container>
+        <button mat-button (click)="onCancelClick()" type="button">
+          Cancel
+        </button>
+        <button mat-button cdkFocusInitial>Save</button>
+      </ng-container>
+    </div>
+  </form>
+</div>

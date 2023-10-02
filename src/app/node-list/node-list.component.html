@@ -1,0 +1,12 @@
+<button mat-raised-button class="add-node-button" (click)="addNode()">
+  Add Node
+</button>
+<app-custom-table
+  [dataSource]="dataSource"
+  [displayedColumns]="displayedColumns"
+  [headerLabels]="headerLabels"
+  [deleteAction]="true"
+  [editAction]="true"
+  (editEmitter)="editNode($event)"
+  (deleteEmitter)="deleteNode($event)"
+></app-custom-table>
