@@ -11,8 +11,9 @@
   (deleteEmitter)="deleteNode($event)"
 ></app-custom-table> -->
 
-<app-custom-sort
-  [dataSource]="dataSource"
+<!-- TABLE WITH SORTING -->
+<!-- <app-custom-sort
+  [tableData]="tableData"
   [displayedColumns]="displayedColumns"
   [headerLabels]="headerLabels"
   [deleteAction]="true"
@@ -21,4 +22,22 @@
   (sortEmitter)="handleSort($event)"
   (editEmitter)="editNode($event)"
   (deleteEmitter)="deleteNode($event)"
-></app-custom-sort>
+></app-custom-sort> -->
+
+<!-- TABLE WITH PAGINATION -->
+<app-paginator
+  [tableData]="tableData"
+  [displayedColumns]="displayedColumns"
+  [headerLabels]="headerLabels"
+  [deleteAction]="true"
+  [editAction]="true"
+  [sort]="true"
+  [paginator]="true"
+  [dataLength]="100"
+  [pageSize]="limit"
+  [pageSizeOptions]="[1, 2, 3, 4, 5, 10, 20]"
+  (paginatorEmitter)="handlePagination($event)"
+  (sortEmitter)="handleSort($event)"
+  (editEmitter)="editNode($event)"
+  (deleteEmitter)="deleteNode($event)"
+></app-paginator>

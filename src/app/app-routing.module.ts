@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { NodeListComponent } from './node-list/node-list.component';
 import { SortTableComponent } from './sort-table/sort-table.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },

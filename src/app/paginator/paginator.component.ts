@@ -1,27 +1,34 @@
 import {
-  AfterViewInit,
   Component,
   EventEmitter,
   Input,
   Output,
   ViewChild,
 } from '@angular/core';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-custom-sort',
-  templateUrl: './custom-sort.component.html',
-  styleUrls: ['./custom-sort.component.scss'],
+  selector: 'app-paginator',
+  templateUrl: './paginator.component.html',
+  styleUrls: ['./paginator.component.scss'],
 })
-export class CustomSortComponent {
+export class PaginatorComponent {
   @Input() displayedColumns: string[] = [];
   @Input() headerLabels: string[] = [];
   @Input() tableData: any[] = [];
+
   @Input() editAction: boolean | undefined;
   @Input() deleteAction: boolean | undefined;
   @Input() readAction: boolean | undefined;
+
   @Input() sort: boolean | undefined;
+
+  @Input() paginator: boolean | undefined;
+  @Input() pageSize: number = 5;
+  @Input() pageSizeOptions: number[] = [5, 10, 20, 50];
+  @Input() dataLength: number = 0;
 
   @Output() editEmitter = new EventEmitter<any>();
   @Output() deleteEmitter = new EventEmitter<any>();
@@ -29,10 +36,26 @@ export class CustomSortComponent {
 
   @Output() sortEmitter = new EventEmitter<any>();
 
+  @Output() paginatorEmitter = new EventEmitter<any>();
+
   dataSource = new MatTableDataSource<any>();
 
+  /* ---------------PAGINATOR STARTS HERE--------------- */
+  @ViewChild(MatPaginator) paginate!: MatPaginator;
+
+  // Handle page change event
+  performPaginatorEmitter(event: PageEvent): void {
+    this.paginatorEmitter.emit(event);
+  }
+
+  /* ---------------PAGINATOR ENDS HERE--------------- */
+
   ngOnInit() {
+    // Set the initial data source
     this.dataSource.data = this.tableData;
+
+    // PAGINATOR
+    this.dataSource.paginator = this.paginate;
   }
 
   performEditEmitter(element: any) {

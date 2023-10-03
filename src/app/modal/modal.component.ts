@@ -32,6 +32,7 @@ export class ModalComponent {
 
   handleNode() {
     console.log(this.nodeForm.value);
+    this.dialogRef.close(this.element);
   }
 
   onCancelClick(): void {

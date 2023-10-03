@@ -22,6 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SortTableComponent } from './sort-table/sort-table.component';
 import { MatSortModule } from '@angular/material/sort';
 import { CustomSortComponent } from './custom-sort/custom-sort.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { CustomSortComponent } from './custom-sort/custom-sort.component';
     CustomTableComponent,
     SortTableComponent,
     CustomSortComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { CustomSortComponent } from './custom-sort/custom-sort.component';
     MatTableModule,
     ReactiveFormsModule,
     MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

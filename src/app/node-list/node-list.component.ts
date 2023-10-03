@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-node-list',
@@ -9,6 +10,7 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class NodeListComponent {
   displayedColumns: string[] = [
+    'no',
     'nodeId',
     'nodeName',
     'vendor',
@@ -17,7 +19,31 @@ export class NodeListComponent {
     'capacity',
     'actions',
   ];
-  dataSource = [
+  tableData = [
+    {
+      nodeId: 'CAT-DHK-001',
+      nodeName: 'Dhaka Cataleya',
+      vendor: 'Cataleya',
+      systemName: 'Cataleya',
+      location: 'Dhaka',
+      capacity: 20000,
+    },
+    {
+      nodeId: 'CAT-CTG-002',
+      nodeName: 'Chattogram Cataleya',
+      vendor: 'Cataleya',
+      systemName: 'Cataleya',
+      location: 'Chattogram',
+      capacity: 20000,
+    },
+    {
+      nodeId: 'CAT-SYL-003',
+      nodeName: 'Sylhet Cataleya',
+      vendor: 'Cataleya',
+      systemName: 'Cataleya',
+      location: 'Sylhet',
+      capacity: 20000,
+    },
     {
       nodeId: 'CAT-DHK-001',
       nodeName: 'Dhaka Cataleya',
@@ -45,6 +71,7 @@ export class NodeListComponent {
   ];
 
   headerLabels = [
+    'No',
     'Node ID',
     'Node Name',
     'Vendor',
@@ -53,6 +80,12 @@ export class NodeListComponent {
     'Capacity',
     'Actions',
   ];
+
+  // DECLARING VARIABLES
+  sortOrder = { active: '', direction: '' };
+
+  limit = 10;
+  offset = 0;
 
   constructor(public dialog: MatDialog) {}
 
@@ -77,8 +110,8 @@ export class NodeListComponent {
     this.openDialog(element);
   }
 
-  deleteNode(element: any){
-    console.log('Delete e click korse.')
+  deleteNode(element: any) {
+    console.log('Delete e click korse.');
   }
 
   // Open Dialog to Add Node
@@ -95,7 +128,20 @@ export class NodeListComponent {
     });
   }
 
-  handleSort(sort: any){
-    console.log('From Node List Component:', sort)
+  handleSort(sort: any) {
+    this.sortOrder = { ...sort };
+    console.log('From Node List Component:', this.sortOrder);
+  }
+
+  // Handling Pagination
+  handlePagination(pagination: any) {
+    this.limit = pagination.pageSize;
+
+    this.offset = pagination.pageIndex * pagination.pageSize;
+
+    console.log({
+      offset: this.offset,
+      limit: this.limit,
+    });
   }
 }
