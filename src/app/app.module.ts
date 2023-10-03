@@ -18,11 +18,22 @@ import { NodeListComponent } from './node-list/node-list.component';
 import { TableComponent } from './table/table.component';
 import { CustomTableComponent } from './custom-table/custom-table.component';
 
-import { ReactiveFormsModule } from '@angular/forms'
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { SortTableComponent } from './sort-table/sort-table.component';
+import { MatSortModule } from '@angular/material/sort';
+import { CustomSortComponent } from './custom-sort/custom-sort.component';
 
 @NgModule({
-  declarations: [AppComponent, ModalComponent, LoginComponent, NodeListComponent, TableComponent, CustomTableComponent],
+  declarations: [
+    AppComponent,
+    ModalComponent,
+    LoginComponent,
+    NodeListComponent,
+    TableComponent,
+    CustomTableComponent,
+    SortTableComponent,
+    CustomSortComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -36,7 +47,8 @@ import { ReactiveFormsModule } from '@angular/forms'
     MatInputModule,
     MatIconModule,
     MatTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

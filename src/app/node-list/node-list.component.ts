@@ -94,4 +94,8 @@ export class NodeListComponent {
       }
     });
   }
+
+  handleSort(sort: any){
+    console.log('From Node List Component:', sort)
+  }
 }

@@ -1,7 +1,7 @@
 <button mat-raised-button class="add-node-button" (click)="addNode()">
   Add Node
 </button>
-<app-custom-table
+<!-- <app-custom-table
   [dataSource]="dataSource"
   [displayedColumns]="displayedColumns"
   [headerLabels]="headerLabels"
@@ -9,4 +9,16 @@
   [editAction]="true"
   (editEmitter)="editNode($event)"
   (deleteEmitter)="deleteNode($event)"
-></app-custom-table>
+></app-custom-table> -->
+
+<app-custom-sort
+  [dataSource]="dataSource"
+  [displayedColumns]="displayedColumns"
+  [headerLabels]="headerLabels"
+  [deleteAction]="true"
+  [editAction]="true"
+  [sort]="true"
+  (sortEmitter)="handleSort($event)"
+  (editEmitter)="editNode($event)"
+  (deleteEmitter)="deleteNode($event)"
+></app-custom-sort>
