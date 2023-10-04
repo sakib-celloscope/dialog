@@ -23,7 +23,8 @@ import { SortTableComponent } from './sort-table/sort-table.component';
 import { MatSortModule } from '@angular/material/sort';
 import { CustomSortComponent } from './custom-sort/custom-sort.component';
 import { PaginatorComponent } from './paginator/paginator.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTableModule,
     ReactiveFormsModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

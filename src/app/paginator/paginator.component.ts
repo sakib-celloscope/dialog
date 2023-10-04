@@ -9,6 +9,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+interface HeaderLabel {
+  header: string;
+  sort: boolean;
+}
+
+
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
@@ -16,7 +22,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class PaginatorComponent {
   @Input() displayedColumns: string[] = [];
-  @Input() headerLabels: string[] = [];
+  @Input() headerLabels: HeaderLabel[] = [];
   @Input() tableData: any[] = [];
 
   @Input() editAction: boolean | undefined;

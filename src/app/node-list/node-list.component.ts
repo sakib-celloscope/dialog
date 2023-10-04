@@ -71,14 +71,38 @@ export class NodeListComponent {
   ];
 
   headerLabels = [
-    'No',
-    'Node ID',
-    'Node Name',
-    'Vendor',
-    'System Name',
-    'Location',
-    'Capacity',
-    'Actions',
+    {
+      header: 'No',
+      sort: true,
+    },
+    {
+      header: 'Node ID',
+      sort: true,
+    },
+    {
+      header: 'Node Name',
+      sort: true,
+    },
+    {
+      header: 'Vendor',
+      sort: true,
+    },
+    {
+      header: 'System Name',
+      sort: false,
+    },
+    {
+      header: 'Location',
+      sort: false,
+    },
+    {
+      header: 'Capacity',
+      sort: false,
+    },
+    {
+      header: 'Actions',
+      sort: false,
+    },
   ];
 
   // DECLARING VARIABLES

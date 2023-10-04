@@ -12,13 +12,15 @@
       *ngFor="let column of displayedColumns; let i = index"
       [matColumnDef]="column"
     >
-      <ng-container *ngIf="headerLabels[i] == 'Actions'; else sortColumn">
+      <ng-container
+        *ngIf="headerLabels[i].header == 'Actions'; else sortColumn"
+      >
         <th
           mat-header-cell
           *matHeaderCellDef
           style="background-color: #2f8fc9; color: white"
         >
-          {{ headerLabels[i] }}
+          {{ headerLabels[i].header }}
         </th>
       </ng-container>
 
@@ -29,45 +31,47 @@
           mat-sort-header
           style="background-color: #2f8fc9; color: white"
         >
-          {{ headerLabels[i] }}
+          {{ headerLabels[i].header }}
         </th>
       </ng-template>
 
       <td mat-cell *matCellDef="let element; let rowIndex = index">
         <!-- Check If it's No column -->
-        <ng-container *ngIf="headerLabels[i] == 'No'; else notNoColumn">
+        <ng-container
+          *ngIf="headerLabels[i].header == 'No'; else actionsColumn"
+        >
           {{ rowIndex + 1 }}
         </ng-container>
-        <!-- Check if it's the "Actions" column -->
-        <ng-template #notNoColumn>
-          <ng-container
-            *ngIf="headerLabels[i] !== 'Actions'; else actionsColumn"
-            >{{ element[column] }}</ng-container
-          >
-        </ng-template>
         <!-- Default "Actions" column -->
         <ng-template #actionsColumn>
-          <button
-            *ngIf="editAction"
-            mat-icon-button
-            (click)="performEditEmitter(element)"
+          <ng-container
+            *ngIf="headerLabels[i].header == 'Actions'; else regularColumn"
           >
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button
-            *ngIf="deleteAction"
-            mat-icon-button
-            (click)="performDeleteEmitter(element)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button
-            *ngIf="readAction"
-            mat-icon-button
-            (click)="performReadEmitter(element)"
-          >
-            <mat-icon>preview</mat-icon>
-          </button>
+            <button
+              *ngIf="editAction"
+              mat-icon-button
+              (click)="performEditEmitter(element)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              *ngIf="deleteAction"
+              mat-icon-button
+              (click)="performDeleteEmitter(element)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button
+              *ngIf="readAction"
+              mat-icon-button
+              (click)="performReadEmitter(element)"
+            >
+              <mat-icon>preview</mat-icon>
+            </button>
+          </ng-container>
+        </ng-template>
+        <ng-template #regularColumn>
+          <ng-container>{{ element[column] }}</ng-container>
         </ng-template>
       </td>
     </ng-container>
@@ -104,13 +108,13 @@
 
       <td mat-cell *matCellDef="let element; let rowIndex = index">
         <!-- Check If it's No column -->
-        <ng-container *ngIf="headerLabels[i] == 'No'; else notNoColumn">
+        <ng-container *ngIf="headerLabels[i].header == 'No'; else notNoColumn">
           {{ rowIndex + 1 }}
         </ng-container>
         <!-- Check if it's the "Actions" column -->
         <ng-template #notNoColumn>
           <ng-container
-            *ngIf="headerLabels[i] !== 'Actions'; else actionsColumn"
+            *ngIf="headerLabels[i].header !== 'Actions'; else actionsColumn"
             >{{ element[column] }}</ng-container
           >
         </ng-template>
