@@ -97,7 +97,7 @@ export class NodeListComponent {
     },
     {
       header: 'Capacity',
-      sort: false,
+      sort: true,
     },
     {
       header: 'Actions',
@@ -154,7 +154,7 @@ export class NodeListComponent {
 
   handleSort(sort: any) {
     this.sortOrder = { ...sort };
-    console.log('From Node List Component:', this.sortOrder);
+    console.log('From Node List Component:', { ...this.sortOrder });
   }
 
   // Handling Pagination
